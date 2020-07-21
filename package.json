@@ -1,6 +1,6 @@
 {
   "name": "rmnodedep",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "remove all node_modules with cmd-based",
   "main": "./bind/index",
   "bin": {
