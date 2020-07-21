@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+const globby = require('globby');
+const spawn = require('cross-spawn');
+const chalk = require('chalk');
+const inquirer = require('inquirer');
+
+const spawnSync = (cmd = '') => {
+  cmd = cmd.split(' ');
+  const [first, ...others] = cmd;
+  return spawn.sync(first, [...others], { stdio: 'inherit' });
+};
+
+(async () => {
+
+  const confirmRemove= (await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'confirmRemove',
+      message: `Are you sure you want to remove all node_modules at:\n${process.cwd()}`,
+      default: false
+    },
+  ])).confirmRemove;
+
+  if(confirmRemove === false) {
+    process.exit(0);
+  }
+
+  while(true) {
+    const paths = await globby('**/node_modules', {
+        onlyDirectories: true,
+        absolute: true,
+    });
+    if (paths.length === 0) {
+      break;
+    }
+    const removeDir = paths[0];
+    spawnSync(`rm -rf ${removeDir}`);
+    console.log(chalk.green(removeDir), chalk.green('has been removed'));
+  }
+})();

@@ -1,0 +1,32 @@
+{
+  "name": "rmnodedep",
+  "version": "0.1.0",
+  "description": "remove all node_modules with cmd-based",
+  "main": "./bind/index",
+  "bin": {
+    "rmnodedep": "./bin/index"
+  },
+  "scripts": {
+    "test": "node bin/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chvin/rmNodeDep.git"
+  },
+  "keywords": [
+    "remove",
+    "node_modules"
+  ],
+  "author": "chvin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chvin/rmNodeDep/issues"
+  },
+  "homepage": "https://github.com/chvin/rmNodeDep#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cross-spawn": "^7.0.3",
+    "globby": "^11.0.1",
+    "inquirer": "^7.3.2"
+  }
+}
