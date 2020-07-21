@@ -29,6 +29,7 @@ const spawnSync = (cmd = '') => {
     const paths = await globby('**/node_modules', {
         onlyDirectories: true,
         absolute: true,
+        deep: 4,
     });
     if (paths.length === 0) {
       break;
